@@ -1,0 +1,75 @@
+#!/bin/sh
+
+append_to_bash_profile() {
+    echo "$1">> ~/.bash_profile
+}
+
+echo_info() {
+  echo -e "\x1b[1;34m[S] First Day: $1\e[0m"
+}
+
+echo_success() {
+  echo -e "\x1b[1;32m[S] First Day: $1\e[0m"
+}
+
+if ! command -v xcode-select >/dev/null; then
+    echo "Looks like we need to install xcode cli tools..."
+
+    xcode-select --install
+fi
+
+if ! command -v brew >/dev/null; then
+    echo "Installing Homebrew ..."
+
+    curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+fi
+
+brew tap caskroom/cask
+
+# Programs
+
+echo "Let's install some software..."
+
+brew cask install microsoft-teams
+brew cask install lastpass
+brew cask install sequel-pro
+brew cask install iterm2
+brew cask install authy-desktop
+brew cask install google-chrome
+brew cask install spotify
+brew cask install docker
+
+# Databases
+
+echo "Let's add some databases..."
+
+brew cask install mysql
+brew cask install postgresql
+brew cask install mongodb
+brew cask install redis
+brew cask install elasticsearch
+brew cask install mysqlworkbench
+
+# Languages
+
+echo "Lets add some language, but first some version managers..."
+
+brew install nvm
+brew install npm
+
+mkdir -p ~/.nvm
+
+# shellcheck disable=SC2016
+append_to_bash_profile 'export NVM_DIR="$HOME/.nvm"'
+# shellcheck disable=SC2016
+append_to_bash_profile '  . "$(brew --prefix nvm)/nvm.sh"'
+
+echo 'Refreshing...'
+
+source ~/.bash_profile
+
+echo 'Just need to finalize Lastpass'
+cd /usr/local/Caskroom/lastpass/latest/
+open Lastpass\ Installer.app
+
+echo 'Now your good to go! And welcome to Scope Web'

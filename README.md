@@ -10,7 +10,7 @@ No Editors are included, because we find everyone has a personal preference.
 
 ## Contributing
 
-All PRs should be checked using ShellCheck
+All PRs should be checked using ShellCheck to find bugs in the shell script and eliminate any error.
 
 License
 -------
