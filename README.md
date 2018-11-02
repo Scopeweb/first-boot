@@ -7,6 +7,7 @@ No Editors are included, because we find everyone has a personal preference.
 ## TODO
 
 - Find way to install Microsoft Teams, LastPass, and Docker onto Linux with a script.
+- Setup an installation guide for WSL on Windows 10
 
 ## Contributing
 
